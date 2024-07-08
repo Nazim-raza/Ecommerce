@@ -27,11 +27,16 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //REST Api
+// app.get("/", (req, res) => {
+//   res.send({
+//     message: "Welcome to Ecommerce",
+//   });
+// });
+
 app.get("/", (req, res) => {
-  res.send({
-    message: "Welcome to Ecommerce",
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-});
 
 //PORT
 const PORT = process.env.PORT || 8080;

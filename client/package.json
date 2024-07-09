@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "https://ecommerce-server-sigma-gray.vercel.app/",
+  "proxy": "https://localhost:8080",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

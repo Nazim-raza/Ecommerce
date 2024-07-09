@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://ecommerce-client-omega-six.vercel.app/"],
+    origin: ["https://ecommerce-client-omega-six.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }

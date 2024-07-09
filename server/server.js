@@ -17,9 +17,24 @@ connectDB();
 //REST object
 const app = express();
 
+
+// CORS configuration
+const allowedOrigins = [
+  'https://ecommerce-client-red.vercel.app',
+  'http://localhost:3000', // add other allowed origins here
+];
 //Middlewares
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow requests with no origin (like mobile apps, curl, etc)
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 app.use(express.json());
-app.use(cors());
 app.use(morgan("dev"));
 
 //route

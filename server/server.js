@@ -19,13 +19,7 @@ const app = express();
 
 //Middlewares
 app.use(express.json());
-app.use(cors(
-  {
-    origin: ["https://ecommerce-client-omega-six.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+app.use(cors());
 app.use(morgan("dev"));
 
 //route

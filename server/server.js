@@ -19,7 +19,13 @@ const app = express();
 
 //Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: [""],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 app.use(morgan("dev"));
 
 //routes
@@ -28,16 +34,16 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //REST Api
-// app.get("/", (req, res) => {
-//   res.send({
-//     message: "Welcome to Ecommerce",
-//   });
-// });
-
 app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  res.send({
+    message: "Welcome to Ecommerce",
   });
+});
+
+// app.get("/", (req, res) => {
+//   app.use(express.static(path.resolve(__dirname, "client", "build")));
+//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+//   });
 
 //PORT
 const PORT = process.env.PORT || 8080;

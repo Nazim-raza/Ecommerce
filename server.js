@@ -45,10 +45,10 @@ app.use("*", function(req,res){
 //   });
 // });
 
-// app.get("/", (req, res) => {
-//   app.use(express.static(path.resolve(__dirname, "client", "build")));
-//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 
 //PORT
 const PORT = process.env.PORT || 8080;
